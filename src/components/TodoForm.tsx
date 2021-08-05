@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-const TodoForm: React.FC<TodoFormProps> = ({ handleSubmit }) => {
+const TodoForm: React.FC<TodoFormProps> = ({
+  handleSubmit,
+  setTodoList,
+}): JSX.Element => {
   const [formData, setFormData] = useState<ITodo | {}>({});
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -16,11 +19,11 @@ const TodoForm: React.FC<TodoFormProps> = ({ handleSubmit }) => {
   };
 
   return (
-    <div className="container-sm add-task-container">
+    <section className="container-sm add-task-container">
       <form
         className="form add-task-form"
         onSubmit={(e) => {
-          handleSubmit(e, formData);
+          handleSubmit(e, formData, setTodoList);
           handlePostSubmit(e);
         }}
       >
@@ -42,7 +45,7 @@ const TodoForm: React.FC<TodoFormProps> = ({ handleSubmit }) => {
           />
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 

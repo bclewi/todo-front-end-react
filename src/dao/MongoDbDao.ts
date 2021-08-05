@@ -2,10 +2,10 @@ import axios, { AxiosResponse } from "axios";
 
 const baseUrl: string = "http://localhost:4000";
 
-export const createTodo = async (formData: ITodo): Promise<any> => {
+export const createTodo = async (formData: ITodo | {}): Promise<any> => {
   try {
     const todo: Omit<ITodo, "_id"> = {
-      textBody: formData.textBody,
+      textBody: (formData as ITodo).textBody,
       isCompleted: false,
     };
     const newTodo: AxiosResponse<ApiData> = await axios.post(

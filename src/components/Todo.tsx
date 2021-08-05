@@ -2,10 +2,11 @@ import React from "react";
 
 const Todo: React.FC<TodoProps> = ({
   todo,
+  setTodoList,
   handleToggle,
   handleUpdate,
   handleDelete,
-}) => {
+}): JSX.Element => {
   return (
     <div className="container-sm">
       <div className="card">
@@ -20,7 +21,7 @@ const Todo: React.FC<TodoProps> = ({
               checked={todo.isCompleted}
               onClick={(e) => {
                 e.preventDefault();
-                handleToggle(todo._id, todo.isCompleted);
+                handleToggle(todo._id, todo.isCompleted, setTodoList);
               }}
             />
             <input
@@ -28,7 +29,7 @@ const Todo: React.FC<TodoProps> = ({
               type="text"
               defaultValue={todo.textBody}
               onBlur={(e) => {
-                handleUpdate(todo._id, e.target.value);
+                handleUpdate(todo._id, e.target.value, setTodoList);
               }}
             />
             <button className="action-btn" type="button">
@@ -39,7 +40,7 @@ const Todo: React.FC<TodoProps> = ({
               className="action-btn"
               type="button"
               onClick={() => {
-                handleDelete(todo._id);
+                handleDelete(todo._id, setTodoList);
               }}
             >
               <i className="bi bi-trash-fill"></i>
