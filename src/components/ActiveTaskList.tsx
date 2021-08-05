@@ -8,7 +8,7 @@ const ActiveTaskList: React.FC<TodoListProps> = ({
   handleDelete,
 }): JSX.Element => {
   return (
-    <section className="active-task-list">
+    <section className="container-fluid active-task-list">
       {todoList
         ? todoList.map((todo: ITodo) => {
             if (!todo.isCompleted) {

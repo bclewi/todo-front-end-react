@@ -21,7 +21,7 @@ const App: React.FC = () => {
   return (
     <div id="app" className="container-fluid">
       <Header />
-      <main className="container">
+      <main className="container-fluid">
         <ActiveTaskList
           todoList={todoList}
           setTodoList={setTodoList}

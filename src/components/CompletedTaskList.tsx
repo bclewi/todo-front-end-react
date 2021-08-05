@@ -11,7 +11,7 @@ const CompletedTaskList: React.FC<TodoListProps> = ({
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   return (
-    <section className="completed-tasks-section">
+    <section className="container-fluid completed-tasks-section">
       <div className="accordion accordion-flush" id="completedTasksAccordion">
         <div className="accordion-item">
           <div className="accordion-header" id="headingOne">

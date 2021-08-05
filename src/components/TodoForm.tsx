@@ -19,7 +19,7 @@ const TodoForm: React.FC<TodoFormProps> = ({
   };
 
   return (
-    <section className="container-sm add-task-container">
+    <section className="container-fluid add-task-container">
       <form
         className="form add-task-form"
         onSubmit={(e) => {

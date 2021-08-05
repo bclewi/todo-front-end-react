@@ -6,10 +6,12 @@
 
 $background-color: #dfe5ec;
 $gutter-size: 0.75rem;
+$card-vertical-margin: 0.1rem;
 $header-font-size: calc(1.375rem + 1.5vw);
-$main-top-offset: calc(#{$header-font-size} + 2.5 * #{$gutter-size});
+$main-top-offset: calc(#{$header-font-size} + 4 * #{$gutter-size});
 $main-bottom-offset: $main-top-offset;
 $primary: #0d6efd;
+$strike-out-color: #6c757d;
 
 // Override defaults
 * {
@@ -34,6 +36,10 @@ main {
   padding: $gutter-size;
 }
 
+.container {
+  background: none;
+}
+
 .container-fluid {
   padding: 0;
 }
@@ -52,20 +58,7 @@ main {
 }
 
 .card {
-  margin: 0.1rem 0rem;
-}
-
-.add-task-container {
-  padding: 0.75rem;
-  background-color: $background-color;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.input-group button {
-  border-radius: 0;
+  margin: $card-vertical-margin 0;
 }
 
 .todo-text-body {
@@ -74,12 +67,12 @@ main {
 
 // Style every .todo-text-body following a checked .form-check-input
 .form-check-input:checked ~ .todo-text-body {
-  color: #6c757d;
+  color: $strike-out-color;
   text-decoration: line-through;
 }
 
 .action-btn {
-  margin: 0 0.5rem;
+  margin: 0 $gutter-size;
   border: none;
 }
 
@@ -95,7 +88,7 @@ main {
 
 // Style every icon with class bi whose parent is an .action-btn
 .action-btn > i.bi {
-  color: #5897f5;
+  color: $primary;
 }
 
 .completed-tasks-section {
@@ -109,21 +102,22 @@ main {
 
 .accordion-header {
   font-size: small;
+  margin-bottom: $gutter-size;
 }
 
 .accordion-button {
-  color: #6c757d;
+  color: $strike-out-color;
 }
 
 .accordion-button,
 .collapsed {
-  padding: 0 0.5rem;
+  padding: 0 $gutter-size;
   font-size: small;
   background: none;
 }
 
 .accordion-button:not(.collapsed) {
-  padding: 0 0.5rem;
+  padding: 0 $gutter-size;
   font-size: small;
   background: none;
 }
@@ -136,4 +130,19 @@ main {
 
 .accordion-body {
   padding: 0;
+}
+
+.add-task-container {
+  //padding: $gutter-size;
+  background-color: $background-color;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+
+.input-group button {
+  border-radius: 0;
 }
