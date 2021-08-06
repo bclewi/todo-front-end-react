@@ -1,14 +1,16 @@
 import Todo from "./Todo";
 
-const ActiveTaskList: React.FC<TodoListProps> = ({
+const ActiveTaskList: React.FC<ITodoListProps> = ({
   todoList,
   setTodoList,
+  selectedTodoId,
+  setSelectedTodoId,
   handleToggle,
   handleUpdate,
   handleDelete,
 }): JSX.Element => {
   return (
-    <section className="container-fluid active-task-list">
+    <section className="col-sm-6 active-task-list">
       {todoList
         ? todoList.map((todo: ITodo) => {
             if (!todo.isCompleted) {
@@ -16,6 +18,8 @@ const ActiveTaskList: React.FC<TodoListProps> = ({
                 <Todo
                   key={todo._id}
                   setTodoList={setTodoList}
+                  selectedTodoId={selectedTodoId}
+                  setSelectedTodoId={setSelectedTodoId}
                   handleToggle={handleToggle}
                   handleUpdate={handleUpdate}
                   handleDelete={handleDelete}

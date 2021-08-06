@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Todo from "./Todo";
 
-const CompletedTaskList: React.FC<TodoListProps> = ({
+const CompletedTaskList: React.FC<ITodoListProps> = ({
   todoList,
   setTodoList,
+  selectedTodoId,
+  setSelectedTodoId,
   handleToggle,
   handleUpdate,
   handleDelete,
@@ -11,7 +13,7 @@ const CompletedTaskList: React.FC<TodoListProps> = ({
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   return (
-    <section className="container-fluid completed-tasks-section">
+    <section className="col-sm-6 completed-tasks-section">
       <div className="accordion accordion-flush" id="completedTasksAccordion">
         <div className="accordion-item">
           <div className="accordion-header" id="headingOne">
@@ -43,6 +45,8 @@ const CompletedTaskList: React.FC<TodoListProps> = ({
                         <Todo
                           key={todo._id}
                           setTodoList={setTodoList}
+                          selectedTodoId={selectedTodoId}
+                          setSelectedTodoId={setSelectedTodoId}
                           handleToggle={handleToggle}
                           handleUpdate={handleUpdate}
                           handleDelete={handleDelete}

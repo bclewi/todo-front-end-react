@@ -6,9 +6,10 @@ interface ITodo {
   updatedAt?: string;
 }
 
-type TodoProps = {
-  todo: ITodo;
+interface ITodoPropFunctions {
   setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>;
+  selectedTodoId: any;
+  setSelectedTodoId: React.Dispatch<React.SetStateAction<string>>;
   handleToggle: (
     _id: string,
     isCompleted: boolean,
@@ -23,35 +24,24 @@ type TodoProps = {
     _id: string,
     setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
   ) => void;
-};
+}
 
-type TodoFormProps = {
+interface ITodoProps extends ITodoPropFunctions {
+  todo: ITodo;
+}
+
+interface ITodoListProps extends ITodoPropFunctions {
+  todoList: ITodo[];
+}
+
+interface ITodoFormProps {
   handleSubmit: (
     e: React.FormEvent,
     formData: ITodo | {},
     setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
   ) => void;
   setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>;
-};
-
-type TodoListProps = {
-  todoList: ITodo[];
-  setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>;
-  handleToggle: (
-    _id: string,
-    isCompleted: boolean,
-    setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
-  ) => void;
-  handleUpdate: (
-    _id: string,
-    textBody: string,
-    setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
-  ) => void;
-  handleDelete: (
-    _id: string,
-    setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
-  ) => void;
-};
+}
 
 type ApiData = {
   message: string;

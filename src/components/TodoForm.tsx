@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TodoForm: React.FC<TodoFormProps> = ({
+const TodoForm: React.FC<ITodoFormProps> = ({
   handleSubmit,
   setTodoList,
 }): JSX.Element => {

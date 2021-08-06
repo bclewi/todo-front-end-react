@@ -13,6 +13,7 @@ import {
 
 const App: React.FC = () => {
   const [todoList, setTodoList] = useState<ITodo[]>([]);
+  const [selectedTodoId, setSelectedTodoId] = useState<string>("");
 
   useEffect(() => {
     fetchTodos(setTodoList);
@@ -22,20 +23,26 @@ const App: React.FC = () => {
     <div id="app" className="container-fluid">
       <Header />
       <main className="container-fluid">
-        <ActiveTaskList
-          todoList={todoList}
-          setTodoList={setTodoList}
-          handleToggle={handleToggle}
-          handleUpdate={handleUpdate}
-          handleDelete={handleDelete}
-        />
-        <CompletedTaskList
-          todoList={todoList}
-          setTodoList={setTodoList}
-          handleToggle={handleToggle}
-          handleUpdate={handleUpdate}
-          handleDelete={handleDelete}
-        />
+        <div className="row">
+          <ActiveTaskList
+            todoList={todoList}
+            setTodoList={setTodoList}
+            selectedTodoId={selectedTodoId}
+            setSelectedTodoId={setSelectedTodoId}
+            handleToggle={handleToggle}
+            handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
+          />
+          <CompletedTaskList
+            todoList={todoList}
+            setTodoList={setTodoList}
+            selectedTodoId={selectedTodoId}
+            setSelectedTodoId={setSelectedTodoId}
+            handleToggle={handleToggle}
+            handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
+          />
+        </div>
       </main>
       <TodoForm handleSubmit={handleSubmit} setTodoList={setTodoList} />
     </div>
