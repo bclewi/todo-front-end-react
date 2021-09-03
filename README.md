@@ -10,7 +10,11 @@ A todo app user interface to perform basic CRUD operations through a back-end RE
 
 ## Demo Screenshots
 
+### iPhone5/SE in Portrait
+
 ![Screenshot of app on iPhone5/SE in Portrait](/img/portrait.png)
+
+### iPhoneX/XS in Landscape
 
 ![Screenshot of app on iPhoneX/XS in Landscape](/img/landscape.png)
 
