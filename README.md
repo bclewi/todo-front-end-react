@@ -2,6 +2,12 @@
 
 A todo app user interface to perform basic CRUD operations through a back-end RESTful API. Created as a part of a MERN full-stack web-app.
 
+## UI Project Scope
+
+- manage one todo list
+- responsive to changes in screen size
+- clean and simple UI
+
 ## Available Scripts
 
 In the project directory, you can run:
