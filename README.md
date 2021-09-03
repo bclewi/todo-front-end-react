@@ -10,9 +10,9 @@ A todo app user interface to perform basic CRUD operations through a back-end RE
 
 ## Demo Screenshots
 
-[![Screenshot of app on iPhone5/SE in Portrait](https://github.com/bclewi/todo-front-end-react/blob/main/img/portrait.png)]
+![Screenshot of app on iPhone5/SE in Portrait](/img/portrait.png)
 
-[![Screenshot of app on iPhoneX/XS in Landscape](https://github.com/bclewi/todo-front-end-react/blob/main/img/landscape.png)]
+![Screenshot of app on iPhoneX/XS in Landscape](/img/landscape.png)
 
 ## Available Scripts
 
