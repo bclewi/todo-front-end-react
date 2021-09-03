@@ -1,7 +1,7 @@
 interface ITodo {
   _id: string;
   textBody: string;
-  isCompleted: boolean;
+  isComplete: boolean;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -12,7 +12,6 @@ interface ITodoPropFunctions {
   setSelectedTodoId: React.Dispatch<React.SetStateAction<string>>;
   handleToggle: (
     _id: string,
-    isCompleted: boolean,
     setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
   ) => void;
   handleUpdate: (

@@ -3,18 +3,17 @@ import axios, { AxiosResponse } from "axios";
 const baseUrl: string = "http://localhost:4000";
 
 export const createTodo = async (formData: ITodo | {}): Promise<any> => {
+  const data: Pick<ITodo, "textBody"> = {
+    textBody: (formData as ITodo).textBody,
+  };
   try {
-    const todo: Omit<ITodo, "_id"> = {
-      textBody: (formData as ITodo).textBody,
-      isCompleted: false,
-    };
     const newTodo: AxiosResponse<ApiData> = await axios.post(
       `${baseUrl}/todos`,
-      todo
+      data
     );
     return newTodo;
   } catch (err) {
-    throw new Error(err);
+    throw new Error((err as Error).message);
   }
 };
 
@@ -25,30 +24,25 @@ export const readAllTodos = async (): Promise<ITodo[]> => {
     );
     return axiosRes.data.todos;
   } catch (err) {
-    throw new Error(err);
+    throw new Error((err as Error).message);
   }
 };
 
 export const toggleCheckbox = async (
-  _id: string,
-  isCompleted: boolean
+  id: string
 ): Promise<AxiosResponse<ApiData>> => {
   try {
-    const todoToUpdate: Pick<ITodo, "isCompleted"> = {
-      isCompleted: isCompleted ? false : true,
-    };
     const updatedTodo: AxiosResponse<ApiData> = await axios.put(
-      `${baseUrl}/todos/${_id}`,
-      todoToUpdate
+      `${baseUrl}/todos/${id}`
     );
     return updatedTodo;
   } catch (err) {
-    throw new Error(err);
+    throw new Error((err as Error).message);
   }
 };
 
 export const updateTodo = async (
-  _id: string,
+  id: string,
   textBody: string
 ): Promise<AxiosResponse<ApiData>> => {
   try {
@@ -56,24 +50,24 @@ export const updateTodo = async (
       textBody,
     };
     const updatedTodo: AxiosResponse<ApiData> = await axios.put(
-      `${baseUrl}/todos/${_id}`,
+      `${baseUrl}/todos/${id}`,
       todoToUpdate
     );
     return updatedTodo;
   } catch (err) {
-    throw new Error(err);
+    throw new Error((err as Error).message);
   }
 };
 
 export const deleteTodo = async (
-  _id: string
+  id: string
 ): Promise<AxiosResponse<ApiData>> => {
   try {
     const deletedTodo: AxiosResponse<ApiData> = await axios.delete(
-      `${baseUrl}/todos/${_id}`
+      `${baseUrl}/todos/${id}`
     );
     return deletedTodo;
   } catch (err) {
-    throw new Error(err);
+    throw new Error((err as Error).message);
   }
 };

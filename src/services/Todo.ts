@@ -37,11 +37,10 @@ const handleSubmit = (
 };
 
 const handleToggle = (
-  _id: string,
-  isCompleted: boolean,
+  id: string,
   setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
 ): void => {
-  toggleCheckbox(_id, isCompleted)
+  toggleCheckbox(id)
     .then(({ status, data }) => {
       if (status !== 200) {
         throw new Error("Error! Todo not updated");
@@ -52,11 +51,11 @@ const handleToggle = (
 };
 
 const handleUpdate = (
-  _id: string,
+  id: string,
   textBody: string,
   setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
 ): void => {
-  updateTodo(_id, textBody)
+  updateTodo(id, textBody)
     .then(({ status, data }) => {
       if (status !== 200) {
         throw new Error("Error! Todo not updated");
@@ -67,10 +66,10 @@ const handleUpdate = (
 };
 
 const handleDelete = (
-  _id: string,
+  id: string,
   setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>
 ): void => {
-  deleteTodo(_id)
+  deleteTodo(id)
     .then(({ status, data }) => {
       if (status !== 200) {
         throw new Error("Error! Todo not deleted");

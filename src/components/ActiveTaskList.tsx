@@ -13,7 +13,7 @@ const ActiveTaskList: React.FC<ITodoListProps> = ({
     <section className="col-sm-6 active-task-list">
       {todoList
         ? todoList.map((todo: ITodo) => {
-            if (!todo.isCompleted) {
+            if (!todo.isComplete) {
               return (
                 <Todo
                   key={todo._id}

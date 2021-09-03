@@ -99,6 +99,7 @@ main {
 }
 
 .selected-icon {
+  display: inline;
   color: $highlight-blue;
 }
 
@@ -127,7 +128,12 @@ main {
   color: $selected-strike-out-text-color;
 }
 
+.action-btn-group {
+  display: inline;
+}
+
 .action-btn {
+  display: inline;
   margin: 0 $default-spacing 0 0;
   border: none;
   background: none;

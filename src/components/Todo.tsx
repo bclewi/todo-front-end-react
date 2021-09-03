@@ -28,17 +28,17 @@ const Todo: React.FC<ITodoProps> = ({
             type="checkbox"
             value=""
             readOnly
-            checked={todo.isCompleted}
+            checked={todo.isComplete}
             onClick={(e) => {
               e.preventDefault();
               setSelectedTodoId("");
-              handleToggle(todo._id, todo.isCompleted, setTodoList);
+              handleToggle(todo._id, setTodoList);
             }}
           />
           {isEditing ? null : (
             <p
               className={
-                todo.isCompleted && selectedTodoId === todo._id
+                todo.isComplete && selectedTodoId === todo._id
                   ? "todo-p todo-p-completed"
                   : "todo-p"
               }
@@ -53,6 +53,7 @@ const Todo: React.FC<ITodoProps> = ({
               <textarea
                 className="todo-textarea"
                 defaultValue={todo.textBody}
+                autoFocus
                 onBlur={(e) => {
                   handleUpdate(todo._id, e.target.value, setTodoList);
                   setIsEditing(false);
@@ -60,7 +61,7 @@ const Todo: React.FC<ITodoProps> = ({
               />
             </div>
           ) : null}
-          <div className="col-1">
+          <div className="col">
             {selectedTodoId === todo._id ? (
               <div className="container action-btn-group">
                 <button
