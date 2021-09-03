@@ -8,6 +8,12 @@ A todo app user interface to perform basic CRUD operations through a back-end RE
 - responsive to changes in screen size
 - clean and simple UI
 
+## Demo Screenshots
+
+[![Screenshot of app on iPhone5/SE in Portrait](https://github.com/bclewi/todo-front-end-react/img/demo_portrait.png)]
+
+[![Screenshot of app on iPhoneX/XS in Landscape](https://github.com/bclewi/todo-front-end-react/img/demo_landscape.png)]
+
 ## Available Scripts
 
 In the project directory, you can run:
