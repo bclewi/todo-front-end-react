@@ -18,20 +18,19 @@ const TodoForm: React.FC<ITodoFormProps> = ({
     e.currentTarget.getElementsByTagName("input")[0].value = "";
   };
 
+  const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit(e, formData, setTodoList);
+    handlePostSubmit(e);
+  };
+
   return (
     <section className="container-fluid add-task-container">
-      <form
-        className="form add-task-form"
-        onSubmit={(e) => {
-          handleSubmit(e, formData, setTodoList);
-          handlePostSubmit(e);
-        }}
-      >
+      <form className="form add-task-form" onSubmit={handleSubmitForm}>
         <div className="input-group">
           <button
             className="btn btn-primary"
             type="submit"
-            disabled={formData === undefined ? true : false}
+            disabled={formData === undefined}
           >
             <i className="bi bi-plus-lg"></i>
           </button>

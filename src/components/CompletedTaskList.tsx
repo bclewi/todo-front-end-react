@@ -1,4 +1,5 @@
 import { useState } from "react";
+import classNames from "classnames";
 import Todo from "./Todo";
 
 const CompletedTaskList: React.FC<ITodoListProps> = ({
@@ -13,72 +14,70 @@ const CompletedTaskList: React.FC<ITodoListProps> = ({
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   let hasOneComplete = (): boolean => {
-    let result = false;
     todoList.forEach((todo) => {
-      if (todo.isComplete) {
-        result = true;
-        return result;
-      }
+      if (todo.isComplete) return true;
     });
-    return result;
+    return false;
   };
+
+  const toggleCollapse = () => {
+    setIsCollapsed((prevState) => !prevState);
+  };
+
+  const accordionButtonClass = classNames("accordion-button", {
+    collapsed: isCollapsed,
+  });
+
+  const collapseOneClass = classNames("accordion-collapse", {
+    collapse: isCollapsed,
+  });
 
   return (
     <section className="col-sm-6 completed-tasks-section">
-      {hasOneComplete() ? (
+      {hasOneComplete() && (
         <div className="accordion accordion-flush" id="completedTasksAccordion">
           <div className="accordion-item">
             <div className="accordion-header" id="headingOne">
               <button
-                className={
-                  "accordion-button" + (isCollapsed ? " collapsed" : "")
-                }
+                className={accordionButtonClass}
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseOne"
                 aria-expanded="false"
                 aria-controls="collapseOne"
-                onClick={() => {
-                  setIsCollapsed((prevState) => !prevState);
-                }}
+                onClick={toggleCollapse}
               >
                 Completed
               </button>
             </div>
             <div
               id="collapseOne"
-              className={
-                "accordion-collapse" + (isCollapsed ? " collapse" : "")
-              }
+              className={collapseOneClass}
               aria-labelledby="headingOne"
               data-bs-parent="#completedTasksAccordion"
             >
               <div className="accordion-body">
-                {todoList
-                  ? todoList.map((todo: ITodo) => {
-                      if (todo.isComplete) {
-                        return (
-                          <Todo
-                            key={todo._id}
-                            setTodoList={setTodoList}
-                            selectedTodoId={selectedTodoId}
-                            setSelectedTodoId={setSelectedTodoId}
-                            handleToggle={handleToggle}
-                            handleUpdate={handleUpdate}
-                            handleDelete={handleDelete}
-                            todo={todo}
-                          />
-                        );
-                      } else {
-                        return null;
-                      }
-                    })
-                  : null}
+                {todoList &&
+                  todoList.map(
+                    (todo: ITodo) =>
+                      todo.isComplete && (
+                        <Todo
+                          key={todo._id}
+                          setTodoList={setTodoList}
+                          selectedTodoId={selectedTodoId}
+                          setSelectedTodoId={setSelectedTodoId}
+                          handleToggle={handleToggle}
+                          handleUpdate={handleUpdate}
+                          handleDelete={handleDelete}
+                          todo={todo}
+                        />
+                      )
+                  )}
               </div>
             </div>
           </div>
         </div>
-      ) : null}
+      )}
     </section>
   );
 };
