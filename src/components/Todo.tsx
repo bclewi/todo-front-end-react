@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 
 const Todo: React.FC<ITodoProps> = ({
   todo,
@@ -22,12 +23,30 @@ const Todo: React.FC<ITodoProps> = ({
     setIsEditing(false);
   };
 
+  const cardClass = classNames("card", {
+    "selected-card": selectedTodoId === todo._id,
+  });
+
+  const todoTextBodyClass = classNames("todo-p", {
+    "todo-p-completed": todo.isComplete && selectedTodoId === todo._id,
+  });
+
+  const editIconClass = classNames(
+    "bi",
+    "bi-pencil-square",
+    "selectable-icon",
+    {
+      "selected-icon": selectedTodoId === todo._id,
+    }
+  );
+
+  const deleteIconClass = classNames("bi", "bi-trash-fill", "selectable-icon", {
+    "selected-icon": selectedTodoId === todo._id,
+  });
+
   return (
     <div className="container-sm">
-      <div
-        className={selectedTodoId === todo._id ? "card selected-card" : "card"}
-        onClick={() => setSelectedTodoId(todo._id)}
-      >
+      <div className={cardClass} onClick={() => setSelectedTodoId(todo._id)}>
         <div className="form-check">
           <input
             id="flexCheckDefault"
@@ -38,17 +57,7 @@ const Todo: React.FC<ITodoProps> = ({
             checked={todo.isComplete}
             onClick={handleCheck}
           />
-          {!isEditing && (
-            <p
-              className={
-                todo.isComplete && selectedTodoId === todo._id
-                  ? "todo-p todo-p-completed"
-                  : "todo-p"
-              }
-            >
-              {todo.textBody}
-            </p>
-          )}
+          {!isEditing && <p className={todoTextBodyClass}>{todo.textBody}</p>}
         </div>
         <div className="row">
           {isEditing && (
@@ -69,26 +78,14 @@ const Todo: React.FC<ITodoProps> = ({
                   type="button"
                   onClick={() => setIsEditing(true)}
                 >
-                  <i
-                    className={
-                      selectedTodoId === todo._id
-                        ? "bi bi-pencil-square selectable-icon selected-icon"
-                        : "bi bi-pencil-square selectable-icon"
-                    }
-                  />
+                  <i className={editIconClass} />
                 </button>
                 <button
                   className="action-btn"
                   type="button"
                   onClick={() => handleDelete(todo._id, setTodoList)}
                 >
-                  <i
-                    className={
-                      selectedTodoId === todo._id
-                        ? "bi bi-trash-fill selectable-icon selected-icon"
-                        : "bi bi-trash-fill selectable-icon"
-                    }
-                  />
+                  <i className={deleteIconClass} />
                 </button>
               </div>
             )}

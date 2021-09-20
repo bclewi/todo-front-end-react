@@ -1,4 +1,5 @@
 import { useState } from "react";
+import classNames from "classnames";
 import Todo from "./Todo";
 
 const CompletedTaskList: React.FC<ITodoListProps> = ({
@@ -23,6 +24,14 @@ const CompletedTaskList: React.FC<ITodoListProps> = ({
     setIsCollapsed((prevState) => !prevState);
   };
 
+  const accordionButtonClass = classNames("accordion-button", {
+    collapsed: isCollapsed,
+  });
+
+  const collapseOneClass = classNames("accordion-collapse", {
+    collapse: isCollapsed,
+  });
+
   return (
     <section className="col-sm-6 completed-tasks-section">
       {hasOneComplete() && (
@@ -30,9 +39,7 @@ const CompletedTaskList: React.FC<ITodoListProps> = ({
           <div className="accordion-item">
             <div className="accordion-header" id="headingOne">
               <button
-                className={
-                  "accordion-button" + (isCollapsed ? " collapsed" : "")
-                }
+                className={accordionButtonClass}
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseOne"
@@ -45,9 +52,7 @@ const CompletedTaskList: React.FC<ITodoListProps> = ({
             </div>
             <div
               id="collapseOne"
-              className={
-                "accordion-collapse" + (isCollapsed ? " collapse" : "")
-              }
+              className={collapseOneClass}
               aria-labelledby="headingOne"
               data-bs-parent="#completedTasksAccordion"
             >

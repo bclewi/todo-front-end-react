@@ -30,7 +30,7 @@ const TodoForm: React.FC<ITodoFormProps> = ({
           <button
             className="btn btn-primary"
             type="submit"
-            disabled={formData === undefined ? true : false}
+            disabled={formData === undefined}
           >
             <i className="bi bi-plus-lg"></i>
           </button>
